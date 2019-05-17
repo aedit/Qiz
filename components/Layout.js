@@ -5,10 +5,11 @@ import Nav from './nav'
 export default ({ children }) => (
   <div>
     <Head title="Don't stay online!" />
-    <Nav />
+    {/* <Nav /> */}
     {children}
-    <style global="true">{`
-      html, body {
+    <style jsx global>{`
+      html,
+      body {
         width: 100%;
         height: 100%;
       }
@@ -17,6 +18,7 @@ export default ({ children }) => (
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: Sans;
       }
     `}</style>
   </div>
