@@ -19,37 +19,40 @@ const Quiz = () => {
             <p>Let's test your skills in python</p>
           </a>
         </Link>
-        <Link as="/start/cpp" href="/start?name=cpp">
-          <a className="card">
+        <Link href="/start">
+          <a
+            className="card"
+            onClick={() => store.dispatch({ type: SET_NAME, payload: 'cpp' })}>
             <h3>Play C++ &rarr;</h3>
             <p>Let's test your skills in C++</p>
           </a>
         </Link>
-        <Link as="/start/quiz1" href="/start/quiz1ame=one">
+        <Link href="/start">
+          <a
+            className="card"
+            onClick={() => store.dispatch({ type: SET_NAME, payload: 'js' })}>
+            <h3>Play JavaScript &rarr;</h3>
+            <p>Let's test your skills in JavaScript</p>
+          </a>
+        </Link>
+        <Link href="/start">
+          <a
+            className="card"
+            onClick={() =>
+              store.dispatch({ type: SET_NAME, payload: 'react' })
+            }>
+            <h3>Play React &rarr;</h3>
+            <p>Let's test your skills in ReactJS</p>
+          </a>
+        </Link>
+
+        <Link href="/start/quiz1ame=one">
           <a className="card">
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>
           </a>
         </Link>
-        <Link as="/start/quiz1" href="/start/quiz1ame=one">
-          <a className="card">
-            <h3>Play Quiz1 &rarr;</h3>
-            <p>Let's test your scores on various platforms</p>
-          </a>
-        </Link>
-        <Link as="/start/quiz1" href="/start/quiz1ame=one">
-          <a className="card">
-            <h3>Play Quiz1 &rarr;</h3>
-            <p>Let's test your scores on various platforms</p>
-          </a>
-        </Link>
-        <Link as="/start/quiz1" href="/start/quiz1ame=one">
-          <a className="card">
-            <h3>Play Quiz1 &rarr;</h3>
-            <p>Let's test your scores on various platforms</p>
-          </a>
-        </Link>
-        <Link as="/start/quiz1" href="/start/quiz1ame=one">
+        <Link href="/start/quiz1ame=one">
           <a className="card">
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>

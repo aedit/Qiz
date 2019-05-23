@@ -5,7 +5,7 @@ import QuizOnline from './QuizOnline'
 import Link from 'next/link'
 import store from '../store'
 import { SET_ANSWERS } from '../actions'
-import pyQuestions from './python'
+import quizzes from '../questions/quizzes'
 
 const swipe = defineSwipe({ swipeDistance: 50 })
 
@@ -97,7 +97,7 @@ export default ({ questions }) => {
       type: SET_ANSWERS,
       payload: {
         userAns: answerList,
-        correctAns: [...pyQuestions.map(e => e.answer)],
+        correctAns: [...quizzes[store.getState().name].map(e => e.answer)],
       },
     })
   }, [answerList])

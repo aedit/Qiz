@@ -44,7 +44,7 @@ const cppQuestions = [
     a: 'public',
     b: 'private',
     c: 'protected',
-    d: 'public and protected',
+    d: 'private and protected',
     answer: 'd',
   },
   {
