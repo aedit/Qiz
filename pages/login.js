@@ -8,7 +8,22 @@ const Quiz = () => {
   return (
     <Layout>
       <h1 className="title">Login via.</h1>
-      <div className="row" />
+      <div className="row">
+        <ul>
+          <li>
+            {' '}
+            <a>Google</a>{' '}
+          </li>
+          <li>
+            {' '}
+            <a>GitHub</a>{' '}
+          </li>
+          <li>
+            {' '}
+            <a>Email</a>{' '}
+          </li>
+        </ul>
+      </div>
       <style jsx>{`
         .title {
           margin: 0;
