@@ -1,0 +1,86 @@
+const cppQuestions = [
+  {
+    question: 'Choose the operator which cannot be overloaded',
+    a: '/',
+    b: '()',
+    c: '::',
+    d: '%',
+    answer: 'c',
+  },
+  {
+    question: 'The pointer which stores always the current active object address is __',
+    a: 'auto_ptr',
+    b: 'this',
+    c: 'p',
+    d: 'self',
+    answer: 'b',
+  },
+  {
+    question: 'HAS-A relationship between the classes is shown through',
+    a: 'Inheritance',
+    b: 'Container classes',
+    c: 'Polymorphism',
+    d: 'Abstraction',
+    answer: 'b',
+  },
+  {
+    question: 'An exception is __',
+    a: 'Runtime Error',
+    b: 'Compile Time Error',
+    c: 'Logical Error',
+    d: 'Execution Error',
+    answer: 'a',
+  },
+  {
+    question: 'Where does the object is created?',
+    a: 'class',
+    b: 'constructor',
+    c: 'destructor',
+    d: 'attributes',
+    answer: 'a',
+  },
+  {
+    question: 'Which of these following members are not accessed by using direct member access operator?',
+    a: 'public',
+    b: 'private',
+    c: 'protected',
+    d: 'public and protected',
+    answer: 'd',
+  },
+  {
+    question: "Pick out the other definition of objects.",
+    a: 'member of the class',
+    b: 'associate of the class',
+    c: 'attribute of the class',
+    d: 'instance of the class',
+    answer: 'd',
+  },
+  {
+    question: 'Which of the following function / types of function cannot have default parameters?',
+    a:
+      'Member function of class',
+    b:
+      'main()',
+    c: 'Member function of structure',
+    d: 'Recursive Function',
+    answer: 'b',
+  },
+  {
+    question: 'What is symbol for writing a comment in C++?',
+    a: '//',
+    b: '#',
+    c: '--',
+    d: '~',
+    answer: 'a',
+  },
+  {
+    question: "Which of the following function / type of function cannot be overloaded?",
+    a: 'Member Function',
+    b: 'Static Function',
+    c: 'Virtual Function',
+    d: 'Recursive Function',
+    answer: 'c',
+  },
+]
+
+export default cppQuestions
