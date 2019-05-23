@@ -6,7 +6,7 @@ export default ({ testRunning, didCheat }) => {
     didCheat()
   }
   return (
-    <Online>
+    <Online polling={false}>
       <div className="container">
         <div>
           <h2>We have been on your side!</h2>

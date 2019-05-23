@@ -3,6 +3,9 @@ import { Offline, Online } from 'react-detect-offline'
 import { Swipeable, defineSwipe } from 'react-touch'
 import QuizOnline from './QuizOnline'
 import Link from 'next/link'
+import store from '../store'
+import { SET_ANSWERS } from '../actions'
+import pyQuestions from './python'
 
 const swipe = defineSwipe({ swipeDistance: 50 })
 
@@ -88,10 +91,20 @@ export default ({ questions }) => {
   const handleChange = i => {
     updateCurrSelected(i)
   }
-  console.log(JSON.stringify(answerList))
+
+  useEffect(() => {
+    store.dispatch({
+      type: SET_ANSWERS,
+      payload: {
+        userAns: answerList,
+        correctAns: [...pyQuestions.map(e => e.answer)],
+      },
+    })
+  }, [answerList])
+
   return (
     <>
-      <Online>
+      <Online polling={false}>
         {currQues === -1 ? (
           cheat ? (
             <div className="container">
@@ -101,7 +114,7 @@ export default ({ questions }) => {
             </div>
           ) : (
             <div className="container">
-              <Link href={`/Submit?answers=${JSON.stringify(answerList)}`}>
+              <Link href="/Submit">
                 <a className="card">Submit</a>
               </Link>
             </div>
@@ -113,7 +126,7 @@ export default ({ questions }) => {
           />
         )}
       </Online>
-      <Offline>
+      <Offline polling={false}>
         {currQues === -1 ? (
           <div className="container">
             <h1>Your test has ended!</h1>

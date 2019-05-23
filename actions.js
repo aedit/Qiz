@@ -1,0 +1,5 @@
+const SET_NAME = 'NAME'
+const DID_CHEAT = 'CHEAT'
+const SET_ANSWERS = 'ANSWERS'
+
+export { SET_ANSWERS, DID_CHEAT, SET_NAME }

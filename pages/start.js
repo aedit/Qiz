@@ -1,14 +1,20 @@
 import React from 'react'
-import QuizOnline from '../components/QuizOnline'
 import QuizOffline from '../components/QuizOffline'
 import pyQuestions from '../components/python'
-import { withRouter } from 'next/router'
+import { connect } from 'react-redux'
 
-const Start = props => {
-  const name = props.router.query.name
-  return (
-      <QuizOffline questions={pyQuestions} />
-  )
+const quiz = {
+  python: [...pyQuestions],
 }
 
-export default withRouter(Start)
+class Start extends React.Component {
+  static getInitialProps({ store }) {
+    return { name: store.getState().name }
+  }
+  render() {
+    const name = this.props.name
+    return <QuizOffline questions={quiz[name]} />
+  }
+}
+
+export default connect()(Start)

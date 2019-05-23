@@ -2,15 +2,20 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import Nav from '../components/nav'
-
+import store from '../store'
+import { SET_NAME } from '../actions'
 
 const Quiz = () => {
   return (
     <Layout>
       <Nav />
       <div className="row">
-        <Link href="/start?name=python">
-          <a className="card">
+        <Link href="/start">
+          <a
+            className="card"
+            onClick={() =>
+              store.dispatch({ type: SET_NAME, payload: 'python' })
+            }>
             <h3>Play Python &rarr;</h3>
             <p>Let's test your skills in python</p>
           </a>
