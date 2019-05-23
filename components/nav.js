@@ -2,8 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: 'https://github.com/segmentio/create-next-app', label: 'Github' },
+  { href: 'https://github.com/aedit/Qiz', label: 'Github' },
   { href: '/about', label: 'About' },
+  { href: '/login', label: 'Login' },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -21,7 +22,7 @@ const Nav = () => (
         {links.map(({ key, href, label }) => (
           <li key={key}>
             <Link href={href}>
-              <a>{label}</a>
+              <a className={label}>{label}</a>
             </Link>
           </li>
         ))}
@@ -52,6 +53,13 @@ const Nav = () => (
         color: #067df7;
         text-decoration: none;
         font-size: 13px;
+      }
+
+      a.Login {
+        padding: 0.1em 0.6em;
+        border-radius: 4px;
+        background: #067df7;
+        color: white;
       }
     `}</style>
   </nav>

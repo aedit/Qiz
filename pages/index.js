@@ -7,7 +7,6 @@ const Home = () => (
     <div className="hero">
       <h1 className="title">Welcome to Qiz!</h1>
       <p className="description">An advanced quizzing platform!</p>
-
       <div className="row">
         <Link href="/quiz">
           <a className="card">

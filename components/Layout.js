@@ -5,7 +5,7 @@ import Nav from './nav'
 export default ({ children }) => (
   <div>
     <Head title="Don't stay online!" />
-    {/* <Nav /> */}
+    <Nav />
     {children}
     <style jsx global>{`
       html,
