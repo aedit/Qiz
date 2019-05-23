@@ -1,11 +1,7 @@
 import React from 'react'
 import QuizOffline from '../components/QuizOffline'
-import pyQuestions from '../components/python'
 import { connect } from 'react-redux'
-
-const quiz = {
-  python: [...pyQuestions],
-}
+import quizzes from '../questions/quizzes'
 
 class Start extends React.Component {
   static getInitialProps({ store }) {
@@ -13,7 +9,7 @@ class Start extends React.Component {
   }
   render() {
     const name = this.props.name
-    return <QuizOffline questions={quiz[name]} />
+    return <QuizOffline questions={quizzes[name]} />
   }
 }
 
