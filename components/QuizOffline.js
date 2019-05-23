@@ -40,9 +40,10 @@ function useKeyPress(targetKey) {
 }
 
 export default ({ questions }) => {
-  const [currQues, updateCurrQues] = React.useState(0)
+  const [currQues, updateCurrQues] = React.useState(-2)
   const [currSelected, updateCurrSelected] = React.useState('')
   const [answerList, updateAnswerList] = React.useState(questions.map(e => ''))
+  const [cheat, didCheat] = React.useState(false)
   const isleft = useKeyPress('ArrowLeft')
   const isright = useKeyPress('ArrowRight')
   React.useEffect(() => {
@@ -53,10 +54,12 @@ export default ({ questions }) => {
   const next = () => {
     updateAnswerList(al => {
       const newal = [...al]
-      newal[currQues] = currSelected
+      newal[currQues === -2 ? 0 : currQues] = currSelected
       return newal
     })
     if (currQues < questions.length - 1) {
+      if (currQues === -2) updateCurrQues(0)
+      if (currQues === -1) return
       updateCurrQues(cq => cq + 1)
       if (currQues !== questions.length - 1)
         updateCurrSelected(answerList[currQues + 1])
@@ -64,18 +67,18 @@ export default ({ questions }) => {
   }
 
   const prev = () => {
-    updateAnswerList(al => {
-      const newal = [...al]
-      newal[currQues] = currSelected
-      return newal
-    })
     if (currQues > 0) {
+      updateAnswerList(al => {
+        const newal = [...al]
+        newal[currQues === -2 ? 0 : currQues] = currSelected
+        return newal
+      })
       updateCurrSelected(answerList[currQues - 1])
       updateCurrQues(cq => cq - 1)
     }
   }
 
-  const ques = questions[currQues]
+  const ques = questions[currQues === -2 ? 0 : currQues]
 
   const goto = () => {
     updateCurrSelected(answerList[0])
@@ -90,13 +93,24 @@ export default ({ questions }) => {
     <>
       <Online>
         {currQues === -1 ? (
-          <div className="container">
-            <Link href={`/Submit?answers=${JSON.stringify(answerList)}`}>
-              <a className="card">Submit</a>
-            </Link>
-          </div>
+          cheat ? (
+            <div className="container">
+              <Link href="/cheat">
+                <a className="card">Submit</a>
+              </Link>
+            </div>
+          ) : (
+            <div className="container">
+              <Link href={`/Submit?answers=${JSON.stringify(answerList)}`}>
+                <a className="card">Submit</a>
+              </Link>
+            </div>
+          )
         ) : (
-          <QuizOnline />
+          <QuizOnline
+            testRunning={currQues > -1}
+            didCheat={() => didCheat(true)}
+          />
         )}
       </Online>
       <Offline>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'next/router'
 import pyQuestions from '../components/python'
+import Cheat from './cheat'
 
 const answers = pyQuestions.map(e => e.answer)
 
