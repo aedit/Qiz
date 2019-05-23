@@ -10,9 +10,7 @@ class Cheat extends React.Component {
     return (
       <Layout>
         <div>
-          <h1>Bhag Bhosdike!</h1>
-          <h2>Cheat karega madarchod?</h2>
-          <h3>Baap ko chutiya samjha hai?</h3>
+          <h1>One should not cheat</h1>
         </div>
         <style jsx>
           {`
