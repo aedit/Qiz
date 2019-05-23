@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "next": "8.1.0",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
     "react": "16.8.6",
     "react-detect-offline": "^2.4.0",
     "react-dom": "16.8.6",
