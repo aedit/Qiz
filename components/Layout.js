@@ -18,7 +18,7 @@ export default ({ children }) => (
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Sans;
+        font-family: 'Google Sans', 'Open Sans', 'sans-serif';
       }
     `}</style>
   </div>
