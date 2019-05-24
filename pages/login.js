@@ -9,6 +9,7 @@ const Login = props => {
   const passwordRef = React.useRef(0)
   const nameRef = React.useRef(0)
   const [signIn, setSignIn] = React.useState(true)
+  const [name, setName] = React.useState('')
   const handleEmailLogin = () => {
     const email = emailRef.current.value
     const password = passwordRef.current.value
@@ -22,20 +23,16 @@ const Login = props => {
   React.useEffect(() => {
     if (props.user) {
       const name = nameRef.current.value
-      props.user
-        .updateProfile({
-          displayName: name,
-        })
-        .then(() => {
-          console.log('Success')
-        })
-        .catch(() => {
-          console.log('Error')
-        })
+      props.user.updateProfile({
+        displayName: name,
+      })
+      // setName(!name ? props.user.displayName : name)
+      setName(props.user.displayName)
     }
   }, [props.user])
+  console.log(name)
   return (
-    <Layout>
+    <Layout name={name}>
       <h2 className="title">Sign In</h2>
       <div className="row">
         <div className="google">
@@ -64,7 +61,7 @@ const Login = props => {
         .title {
           margin: 0;
           width: 100%;
-          padding-top: 80px;
+          padding-top: 40px;
           line-height: 1.15;
           font-size: 38px;
           text-align: center;
@@ -90,18 +87,20 @@ const Login = props => {
         }
         .row {
           width: 50%;
-          height: 50vh;
 
-          margin: 40px auto 40px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 10px;
+          height: 400px;
+
+          margin: 20px auto 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           padding: 10px;
         }
         .google {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-basis: 50%;
         }
         .email {
           display: flex;
@@ -110,6 +109,7 @@ const Login = props => {
           padding: 1em 2em;
           border-radius: 8px;
           box-shadow: 0 8px 12px -10px rgba(0, 0, 0, 0.6);
+          flex-basis: 50%;
         }
         .signup {
           text-align: center;

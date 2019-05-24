@@ -10,7 +10,7 @@ const links = [
   return link
 })
 
-const Nav = () => (
+const Nav = ({ name }) => (
   <nav>
     <ul>
       <li>
@@ -22,7 +22,9 @@ const Nav = () => (
         {links.map(({ key, href, label }) => (
           <li key={key}>
             <Link href={href}>
-              <a className={label}>{label}</a>
+              <a className={label}>
+                {label === 'Login' ? (name !== '' ? name : 'Login') : label}
+              </a>
             </Link>
           </li>
         ))}
