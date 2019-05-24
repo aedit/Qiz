@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "firebase": "^6.0.2",
     "next": "8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "react": "16.8.6",
@@ -14,6 +15,7 @@
     "react-keyboard-event-handler": "^1.4.1",
     "react-redux": "^7.0.3",
     "react-touch": "^0.4.4",
+    "react-with-firebase-auth": "^1.0.3",
     "redux": "^4.0.1"
   },
   "devDependencies": {
