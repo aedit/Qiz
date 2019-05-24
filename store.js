@@ -1,12 +1,19 @@
 import { createStore } from 'redux'
 import { SET_NAME, DID_CHEAT, SET_ANSWERS } from './actions'
 
-const initialState = { qname: '', cheat: false, userAns: [], correctAns: [] }
+const initialState = {
+  userName: '',
+  qname: '',
+  cheat: false,
+  userAns: [],
+  correctAns: [],
+}
 
 const reducer = (state = initialState, action) => {
+  
   switch (action.type) {
-    case 'INIT':
-      return { ...state, ...action.payload }
+    case 'USER_NAME':
+      return { ...state, userName: action.payload }
     case SET_NAME:
       return { ...state, qname: action.payload }
     case DID_CHEAT:

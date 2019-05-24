@@ -31,7 +31,6 @@ class MyApp extends App {
       signInWithEmailAndPassword,
       createUserWithEmailAndPassword,
     } = this.props
-
     return (
       <Container>
         <Provider store={store}>

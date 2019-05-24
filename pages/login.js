@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import store from '../store'
-import actions from '../actions'
 import Layout from '../components/Layout'
 
 const Login = props => {
@@ -28,11 +27,18 @@ const Login = props => {
       })
       // setName(!name ? props.user.displayName : name)
       setName(props.user.displayName)
+      
     }
   }, [props.user])
-  console.log(name)
-  return (
-    <Layout name={name}>
+  console.log(store.getState())
+  return props.user ? (
+    <Layout>
+      <Link href="/quiz">
+        <a>Goto Quizzes</a>
+      </Link>
+    </Layout>
+  ) : (
+    <Layout>
       <h2 className="title">Sign In</h2>
       <div className="row">
         <div className="google">

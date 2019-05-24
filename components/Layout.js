@@ -2,10 +2,10 @@ import React from 'react'
 import Head from './head'
 import Nav from './nav'
 
-export default ({ children, name }) => (
+export default ({ children }) => (
   <div>
     <Head title="Don't stay online!" />
-    <Nav name={name} />
+    <Nav />
     {children}
     <style jsx global>{`
       html,

@@ -8,13 +8,14 @@ const Home = props => (
       <h1 className="title">Welcome to Qiz!</h1>
       <p className="description">An advanced quizzing platform!</p>
       <div className="row">
-        <Link href="/login">
+        <Link prefetch href={!props.user ? '/login' : '/quiz'}>
           <a className="card">
             <h3>Play Quiz &rarr;</h3>
             <p>Let's login to test your scores on various platforms </p>
           </a>
         </Link>
       </div>
+      <button onClick={props.signOut}>SignOut</button>
     </div>
 
     <style jsx>{`

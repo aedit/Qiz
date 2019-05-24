@@ -4,12 +4,12 @@ import store from '../store'
 import { SET_NAME } from '../actions'
 import Layout from '../components/Layout'
 
-const Quiz = () => {
+const Quiz = props => {
   return (
     <Layout>
       <h1 className="title">Select a Qiz</h1>
       <div className="row">
-        <Link href="/start">
+        <Link prefetch href="/start">
           <a
             className="card"
             onClick={() =>
@@ -19,7 +19,7 @@ const Quiz = () => {
             <p>Let's test your skills in python</p>
           </a>
         </Link>
-        <Link href="/start">
+        <Link prefetch href="/start">
           <a
             className="card"
             onClick={() => store.dispatch({ type: SET_NAME, payload: 'cpp' })}>
@@ -27,7 +27,7 @@ const Quiz = () => {
             <p>Let's test your skills in C++</p>
           </a>
         </Link>
-        <Link href="/start">
+        <Link prefetch href="/start">
           <a
             className="card"
             onClick={() => store.dispatch({ type: SET_NAME, payload: 'js' })}>
@@ -35,7 +35,7 @@ const Quiz = () => {
             <p>Let's test your skills in JavaScript</p>
           </a>
         </Link>
-        <Link href="/start">
+        <Link prefetch href="/start">
           <a
             className="card"
             onClick={() =>
@@ -46,13 +46,13 @@ const Quiz = () => {
           </a>
         </Link>
 
-        <Link href="/start/quiz1ame=one">
+        <Link prefetch href="/start/quiz1ame=one">
           <a className="card">
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>
           </a>
         </Link>
-        <Link href="/start/quiz1ame=one">
+        <Link prefetch href="/start/quiz1ame=one">
           <a className="card">
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>
