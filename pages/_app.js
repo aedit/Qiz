@@ -11,19 +11,14 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import { providers, firebaseAppAuth } from '../firebaseConfig'
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    // we can dispatch from here too
-    ctx.store.dispatch({ type: 'START' })
-
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
       : {}
-
     return { pageProps }
   }
 
   render() {
     const { Component, pageProps, store } = this.props
-
     const {
       user,
       signOut,
