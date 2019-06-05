@@ -4,9 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "now-build": "next build",
-    "export": "next export",
-    "deploy": "npm run build && npm run export"
+    "now-build": "next build"
   },
   "dependencies": {
     "firebase": "^6.0.2",
