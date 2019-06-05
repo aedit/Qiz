@@ -1,37 +1,37 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import { connect } from 'react-redux'
-import { firebaseAppDb } from '../firebaseConfig'
 
 class Cheat extends React.Component {
-  componentDidMount() {
-    const user = this.props.user
-    const quizRef = firebaseAppDb.ref(
-      `users/${user.uid}/quiz/${this.props.qname}`,
-    )
+  // componentDidMount() {
+  //   const user = this.props.user
+  //   const quizRef = firebaseAppDb.ref(
+  //     `users/${user.uid}/quiz/${this.props.qname}`,
+  //   )
 
-    quizRef.once('value', snapshot => {
-      const quiz = snapshot.val()
-      if (quiz) {
-        quizRef.update([
-          ...quiz,
-          {
-            cheat: true,
-            score: 0,
-            time: Date.now().toString(),
-          },
-        ])
-      } else {
-        quizRef.set([
-          {
-            cheat: true,
-            score: 0,
-            time: Date.now().toString(),
-          },
-        ])
-      }
-    })
-  }
+  //   quizRef.once('value', snapshot => {
+  //     const quiz = snapshot.val()
+  //     if (quiz) {
+  //       quizRef.update([
+  //         ...quiz,
+  //         {
+  //           cheat: true,
+  //           score: 0,
+  //           time: Date.now().toString(),
+  //         },
+  //       ])
+  //     } else {
+  //       quizRef.set([
+  //         {
+  //           cheat: true,
+  //           score: 0,
+  //           time: Date.now().toString(),
+  //         },
+  //       ])
+  //     }
+  //   })
+  // }
+
   render() {
     return (
       <Layout>
