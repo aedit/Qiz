@@ -5,7 +5,6 @@ import QuizOnline from './QuizOnline'
 import Link from 'next/link'
 import store from '../store'
 import { SET_ANSWERS } from '../actions'
-import quizzes from '../questions/quizzes'
 
 const swipe = defineSwipe({ swipeDistance: 50 })
 

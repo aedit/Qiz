@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import { connect } from 'react-redux'
-import { firebaseAppDb } from '../firebaseConfig'
 
 class Cheat extends React.Component {
   componentDidMount() {
@@ -32,6 +31,7 @@ class Cheat extends React.Component {
       }
     })
   }
+
   render() {
     return (
       <Layout>
