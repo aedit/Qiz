@@ -46,6 +46,8 @@ class Nav extends React.Component {
           }
           nav {
             text-align: center;
+            font-size: 1.1em;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.4);
           }
           ul {
             display: flex;
@@ -61,7 +63,6 @@ class Nav extends React.Component {
           a {
             color: #067df7;
             text-decoration: none;
-            font-size: 13px;
           }
 
           a.Login {

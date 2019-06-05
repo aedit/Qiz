@@ -61,7 +61,7 @@ const Quiz = props => {
           </a>
         </Link>
 
-        <Link prefetch href="/start/quiz1ame=one">
+        {/* <Link prefetch href="/start/quiz1ame=one">
           <a className="card">
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>
@@ -72,7 +72,7 @@ const Quiz = props => {
             <h3>Play Quiz1 &rarr;</h3>
             <p>Let's test your scores on various platforms</p>
           </a>
-        </Link>
+        </Link> */}
       </div>
       <style jsx>{`
         .title {

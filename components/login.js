@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from './Layout'
-import { firebaseAppAuth } from '../firebaseConfig'
+import { firebaseAppAuth, firebaseAppDb } from '../firebaseConfig'
 
 class Login extends React.Component {
   state = {
@@ -27,6 +27,10 @@ class Login extends React.Component {
         user.updateProfile({
           displayName: name,
         })
+        firebaseAppDb.ref(`users/${user.uid}`).set({
+          email: user.email,
+          username: name,
+        })
       })
   }
 
@@ -39,7 +43,13 @@ class Login extends React.Component {
           <div className="google">
             <button
               onClick={() => {
-                props.signInWithGoogle()
+                props.signInWithGoogle().then(() => {
+                  const user = firebaseAppAuth.currentUser
+                  firebaseAppDb.ref(`users/${user.uid}`).set({
+                    email: user.email,
+                    username: user.displayName,
+                  })
+                })
               }}
               className="loginBtn loginBtn--google">
               Login with Google
@@ -87,6 +97,22 @@ class Login extends React.Component {
             border: 0.1em solid #067df7;
             border-radius: 5px;
             box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 300ms linear;
+            cursor: pointer;
+          }
+          .email button:focus {
+            animation: click 300ms linear 1;
+          }
+          @keyframes click {
+            form {
+              box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.6);
+            }
+            50% {
+              box-shadow: 0 0 0 0 transparent;
+            }
+            to {
+              box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.6);
+            }
           }
           input {
             padding: 0.4em 0.8em;

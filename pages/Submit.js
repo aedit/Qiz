@@ -1,11 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Nav from '../components/nav'
+import { firebaseAppDb } from '../firebaseConfig'
 
 class Submit extends React.Component {
+  componentDidMount() {
+    const { userAns, correctAns } = this.props
+    const score = userAns.filter((e, i) => e === correctAns[i]).length
+    const user = this.props.user
+    const quizRef = firebaseAppDb.ref(
+      `users/${user.uid}/quiz/${this.props.qname}`,
+    )
+
+    quizRef.once('value', snapshot => {
+      const quiz = snapshot.val()
+      if (quiz) {
+        quizRef.update([
+          ...quiz,
+          {
+            cheat: false,
+            score: score,
+            time: Date.now().toString(),
+          },
+        ])
+      } else {
+        quizRef.set([
+          {
+            cheat: false,
+            score: score,
+            time: Date.now().toString(),
+          },
+        ])
+      }
+    })
+  }
+
   render() {
     const { userAns, correctAns } = this.props
     const score = userAns.filter((e, i) => e === correctAns[i]).length
+
     return (
       <>
         <Nav />
@@ -89,6 +122,7 @@ const mapStateToProps = (state, props) => {
     ...props,
     userAns: state.userAns,
     correctAns: state.correctAns,
+    qname: state.qname,
   }
 }
 

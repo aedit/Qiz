@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import store from '../store'
 
-const Home = props => (
+const Home = () => (
   <Layout>
     <div className="hero">
       <h1 className="title">Welcome to Qiz!</h1>
@@ -16,13 +15,6 @@ const Home = props => (
           </a>
         </Link>
       </div>
-      <button
-        onClick={() => {
-          props.signOut()
-          store.dispatch({ type: 'USER_NAME', payload: '' })
-        }}>
-        SignOut
-      </button>
     </div>
 
     <style jsx>{`
