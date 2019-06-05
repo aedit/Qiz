@@ -8,9 +8,7 @@ class Submit extends React.Component {
     const { userAns, correctAns } = this.props
     const score = userAns.filter((e, i) => e === correctAns[i]).length
     const user = this.props.user
-    const quizRef = firebaseAppDb.ref(
-      `users/${user.uid}/quiz/${this.props.qname}`,
-    )
+    const quizRef = firebaseAppDb.ref(`users/${user.uid}/quiz/${this.props.qname}`,)
 
     quizRef.once('value', snapshot => {
       const quiz = snapshot.val()
