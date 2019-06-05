@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "heroku-postbuild": "npm audit fix && npm run build",
     "now-build": "next build"
   },
   "dependencies": {
