@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from './Layout'
-import { firebaseAppAuth, firebaseAppDb } from '../firebaseConfig'
+import { firebaseAppAuth } from '../firebaseConfig'
 
 class Login extends React.Component {
   state = {
@@ -27,10 +27,6 @@ class Login extends React.Component {
         user.updateProfile({
           displayName: name,
         })
-        firebaseAppDb.ref(`users/${user.uid}`).set({
-          email: user.email,
-          username: name,
-        })
       })
   }
 
@@ -42,15 +38,7 @@ class Login extends React.Component {
         <div className="row">
           <div className="google">
             <button
-              onClick={() => {
-                props.signInWithGoogle().then(() => {
-                  const user = firebaseAppAuth.currentUser
-                  firebaseAppDb.ref(`users/${user.uid}`).set({
-                    email: user.email,
-                    username: user.displayName,
-                  })
-                })
-              }}
+              onClick={props.signInWithGoogle}
               className="loginBtn loginBtn--google">
               Login with Google
             </button>
