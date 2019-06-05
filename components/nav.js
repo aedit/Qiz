@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 const links = [
   { href: 'https://github.com/aedit/Qiz', label: 'Github' },
   { href: '/about', label: 'About' },
-  { href: '/login', label: 'Login' },
+  { href: '/profile', label: 'Login' },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -24,7 +24,7 @@ class Nav extends React.Component {
           <ul>
             {links.map(({ key, href, label }) => (
               <li key={key}>
-                <Link href={href}>
+                <Link prefetch href={href}>
                   <a className={label}>
                     {label === 'Login'
                       ? this.props.userName
@@ -76,16 +76,14 @@ class Nav extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
+    ...props,
     userName: state.userName,
   }
 }
 
 export default connect(
   mapStateToProps,
-  () => {
-    {
-    }
-  },
+  () => ({}),
 )(Nav)

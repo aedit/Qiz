@@ -3,9 +3,24 @@ import Link from 'next/link'
 import store from '../store'
 import { SET_NAME } from '../actions'
 import Layout from '../components/Layout'
+import Login from '../components/login'
 
 const Quiz = props => {
-  return (
+  const [loggedin, setLoggedin] = React.useState(props.user ? true : false)
+  React.useEffect(() => {
+    if (props.user) {
+      setLoggedin(true)
+      const name = props.user.displayName
+        ? props.user.displayName
+        : props.user.email
+      store.dispatch({ type: 'USER_NAME', payload: name })
+    } else {
+      setLoggedin(false)
+    }
+  }, [props.user])
+  return !loggedin ? (
+    <Login {...props} />
+  ) : (
     <Layout>
       <h1 className="title">Select a Qiz</h1>
       <div className="row">
@@ -75,9 +90,9 @@ const Quiz = props => {
           width: 100%;
           margin: 80px auto 40px;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
           grid-gap: 10px;
-          justify-items: center;
+          justify-items: space-around;
           align-content: center;
           padding: 10px;
         }

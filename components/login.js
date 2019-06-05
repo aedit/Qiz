@@ -1,17 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout'
-import redirect from '../lib/redirect'
-import * as firebase from 'firebase/app'
+import Layout from './Layout'
+import { firebaseAppAuth } from '../firebaseConfig'
 
 class Login extends React.Component {
-  static async getInitialProps(context) {
-    const user = firebase.auth().currentUser
-    if (user) {
-      redirect(context, '/quiz')
-    }
-    return {}
-  }
-
   state = {
     signIn: true,
   }
@@ -26,22 +17,17 @@ class Login extends React.Component {
     this.props.signInWithEmailAndPassword(email, password)
   }
   handleEmailSignUp = async () => {
+    const name = this.nameRef.current.value
     const email = this.emailRef.current.value
     const password = this.passwordRef.current.value
-    await this.props.createUserWithEmailAndPassword(email, password)
-  }
-
-  componentDidUpdate() {
-    if (this.props.user && !this.state.signIn) {
-      const name = this.nameRef.current.value
-      this.props.user.updateProfile({
-        displayName: name,
+    await this.props
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const user = firebaseAppAuth.currentUser
+        user.updateProfile({
+          displayName: name,
+        })
       })
-    }
-    // if (this.props.user) {
-    //   console.log(this.props)
-    //   // redirect(this.props.ctx, '/quiz')
-    // }
   }
 
   render() {
@@ -52,7 +38,9 @@ class Login extends React.Component {
         <div className="row">
           <div className="google">
             <button
-              onClick={props.signInWithGoogle}
+              onClick={() => {
+                props.signInWithGoogle()
+              }}
               className="loginBtn loginBtn--google">
               Login with Google
             </button>

@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Nav from '../components/nav'
 
 class Submit extends React.Component {
-  static getInitialProps({ store }) {
-    return { ...store.getState() }
-  }
   render() {
     const { userAns, correctAns } = this.props
     const score = userAns.filter((e, i) => e === correctAns[i]).length
     return (
       <>
+        <Nav />
         <div className="container">
           <h2>Answers: </h2>
           <div className="row">
@@ -85,4 +84,15 @@ class Submit extends React.Component {
   }
 }
 
-export default connect()(Submit)
+const mapStateToProps = (state, props) => {
+  return {
+    ...props,
+    userAns: state.userAns,
+    correctAns: state.correctAns,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  () => ({}),
+)(Submit)

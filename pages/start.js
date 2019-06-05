@@ -4,21 +4,26 @@ import { connect } from 'react-redux'
 import quizzes from '../questions/quizzes'
 import NextHead from 'next/head'
 
-class Start extends React.Component {
-  static getInitialProps({ store }) {
-    return { name: store.getState().qname }
-  }
-  render() {
-    const name = this.props.name
-    return (
-      <>
-        <NextHead>
-          <title>{name} Quiz</title>
-        </NextHead>
-        <QuizOffline questions={quizzes[name]} />
-      </>
-    )
+const Start = props => {
+  const name = props.name
+  return (
+    <>
+      <NextHead>
+        <title>{name} Quiz</title>
+      </NextHead>
+      <QuizOffline questions={quizzes[name]} />
+    </>
+  )
+}
+
+const mapStateToProps = (state, props) => {
+  return {
+    ...props,
+    name: state.qname,
   }
 }
 
-export default connect()(Start)
+export default connect(
+  mapStateToProps,
+  () => ({}),
+)(Start)

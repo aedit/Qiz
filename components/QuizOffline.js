@@ -97,7 +97,7 @@ export default ({ questions }) => {
       type: SET_ANSWERS,
       payload: {
         userAns: answerList,
-        correctAns: [...quizzes[store.getState().name].map(e => e.answer)],
+        correctAns: [...quizzes[store.getState().qname].map(e => e.answer)],
       },
     })
   }, [answerList])
