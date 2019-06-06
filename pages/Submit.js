@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Nav from '../components/nav'
+import {firebaseAppDb} from '../firebaseConfig'
 
 class Submit extends React.Component {
   componentDidMount() {
