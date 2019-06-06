@@ -7,7 +7,7 @@
     "now-build": "next build"
   },
   "dependencies": {
-    "firebase": "^6.0.2",
+    "firebase": "^5.7.1",
     "grpc": "^1.21.1",
     "next": "8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
@@ -17,7 +17,7 @@
     "react-keyboard-event-handler": "^1.4.1",
     "react-redux": "^7.0.3",
     "react-touch": "^0.4.4",
-    "react-with-firebase-auth": "^1.0.3",
+    "react-with-firebase-auth": "^1.0.0",
     "redux": "^4.0.1"
   },
   "devDependencies": {
