@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "firebase": "^6.0.2",
+    "grpc": "^1.21.1",
     "next": "8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "react": "16.8.6",
