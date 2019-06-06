@@ -20,18 +20,26 @@ class Login extends React.Component {
     const name = this.nameRef.current.value
     const email = this.emailRef.current.value
     const password = this.passwordRef.current.value
-    await this.props
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        const user = firebaseAppAuth.currentUser
-        user.updateProfile({
-          displayName: name,
-        })
-        firebaseAppDb.ref(`users/${user.uid}`).set({
-          email: user.email,
-          username: name,
-        })
+    await this.props.createUserWithEmailAndPassword(email, password)
+  }
+
+  componentWillUnmount() {
+    const user = firebaseAppAuth.currentUser
+    if (!user.displayName) {
+      user.updateProfile({
+        displayName: name,
       })
+      const name = this.nameRef.current.value
+      firebaseAppDb.ref(`users/${user.uid}`).set({
+        email: user.email,
+        username: name,
+      })
+    } else {
+      firebaseAppDb.ref(`users/${user.uid}`).set({
+        email: user.email,
+        username: user.displayName,
+      })
+    }
   }
 
   render() {
@@ -42,15 +50,7 @@ class Login extends React.Component {
         <div className="row">
           <div className="google">
             <button
-              onClick={() => {
-                props.signInWithGoogle().then(() => {
-                  const user = firebaseAppAuth.currentUser
-                  firebaseAppDb.ref(`users/${user.uid}`).set({
-                    email: user.email,
-                    username: user.displayName,
-                  })
-                })
-              }}
+              onClick={props.signInWithGoogle}
               className="loginBtn loginBtn--google">
               Login with Google
             </button>
