@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "firebase": "^5.7.1",
-    "grpc": "^1.21.1",
+    "grpc": "^1.24.9",
     "next": "^8.1.1-canary.47",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "react": "16.8.6",
